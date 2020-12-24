@@ -1,0 +1,30 @@
+INSERT INTO students VALUES(1, 'Zaur', 3);
+INSERT INTO students VALUES(2, 'Misha', 2);
+INSERT INTO students VALUES(3, 'Kolya', 4);
+INSERT INTO students VALUES(4, 'Vasya', 5);
+INSERT INTO students VALUES(5, 'Petya', 1);
+
+CREATE OR REPLACE VIEW fin_emp12 AS SELECT * FROM students;
+SELECT * FROM fin_emp12;
+CREATE FORCE VIEW v201 AS SELECT * FROM students2; 
+
+CREATE VIEW v203 AS SELECT * FROM students WHERE course > 2 WITH CHECK OPTION;
+SELECT * FROM v211;
+INSERT inTo v203 VALUES(8, 'Fedya', 3);
+SELECT * FROM v203;
+UPDATE v203 SET course = 5 WHERE name = 'Fedya';
+CREATE VIEW v204 AS SELECT * FROM students WITH READ ONLY;
+CREATE VIEW v210 AS SELECT * FROM students
+WITH READ ONLY CONSTRAINT restriction_1;
+CREATE VIEW v211 (a, b, c) AS SELECT * FROM students;
+
+CREATE FORCE VIEW v18 AS SELECT name, last_name FROM students;
+SELECT * FROM v212;
+ALTER TABLE students ADD (last_name VARCHAR2(15));
+ALTER VIEW v18 COMPILE;
+DROP VIEW v18;
+CREATE VIEW v212 AS SELECT * FROM v211;
+CREATE VIEW v301 AS SELECT * FROM students
+WHERE id > 4;
+SELECT * FROM v301 WHERE name = 'Petya';
+SELECT * FROM students WHERE id > 4 AND name = 'Petya';
